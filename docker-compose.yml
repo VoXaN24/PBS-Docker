@@ -1,0 +1,17 @@
+services:
+  pbs:
+    image: voxan24/pbs-docker:latest
+    build: .
+    container_name: proxmox-backup-server
+    restart: unless-stopped
+    ports:
+      - "8007:8007"
+    volumes:
+      - pbs-config:/etc/proxmox-backup
+      - pbs-data:/var/lib/proxmox-backup
+      - pbs-logs:/var/log/proxmox-backup
+
+volumes:
+  pbs-config:
+  pbs-data:
+  pbs-logs:
