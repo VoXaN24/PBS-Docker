@@ -1,6 +1,6 @@
 services:
   pbs:
-    image: voxan24/pbs-docker:latest
+    image: voxvox2/pbs-docker:latest
     build: .
     container_name: proxmox-backup-server
     restart: unless-stopped
