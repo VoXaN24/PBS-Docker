@@ -1,4 +1,4 @@
-FROM debian:13
+FROM debian:trixie
 
 RUN apt update -y && apt upgrade -y
 RUN apt install -y wget gnupg
