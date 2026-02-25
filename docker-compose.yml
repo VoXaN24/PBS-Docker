@@ -1,23 +1,17 @@
 services:
   pbs:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: pbs
-    hostname: pbs
+    image: voxan24/pbs-docker:latest
+    build: .
+    container_name: proxmox-backup-server
     restart: unless-stopped
     ports:
-      - "8007:8007/tcp"
-      - "8007:8007/udp"
-    command: ["proxmox-backup-proxy"]
+      - "8007:8007"
     volumes:
-      - pbs_config:/etc/proxmox-backup
-      - pbs_varlib:/var/lib/proxmox-backup
-      - pbs_logs:/var/log/proxmox-backup
-      - pbs_datastore:/mnt/datastore
+      - pbs-config:/etc/proxmox-backup
+      - pbs-data:/var/lib/proxmox-backup
+      - pbs-logs:/var/log/proxmox-backup
 
 volumes:
-  pbs_config:
-  pbs_varlib:
-  pbs_logs:
-  pbs_datastore:
+  pbs-config:
+  pbs-data:
+  pbs-logs:
